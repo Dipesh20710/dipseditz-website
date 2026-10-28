@@ -28,6 +28,7 @@
         <a href="#home">Home</a>
         <a href="#videos">Videos</a>
         <a href="#about">About</a>
+        <a href="#book">Book an Edit</a>
         <a href="#connect">Connect</a>
       </nav>
       <div class="nav-actions">
@@ -59,6 +60,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
               Subscribe on YouTube
             </a>
+            <a class="btn btn-primary" href="#book">Book an Edit</a>
             <a class="btn btn-ghost" href="#videos">Watch Latest</a>
           </div>
           <div class="hero-stats">
@@ -119,6 +121,159 @@
               <div class="about-stat"><strong>∞</strong><span>Creativity</span></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book Your Edit -->
+    <section class="section" id="book">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Book Your Edit</span>
+          <h2 class="section-title">Book Your <span class="gradient-text">Edit</span></h2>
+          <p class="section-sub">Tell me about your project and get a custom editing quote.</p>
+        </div>
+
+        <div class="booking-intro reveal">
+          <p>Choose a service below or describe your project in the form. Final quotes depend on your specific requirements — no fixed prices or guaranteed delivery times are promised. Every project is reviewed individually.</p>
+        </div>
+
+        <div class="service-grid reveal" id="serviceGrid">
+          <button type="button" class="service-card" data-service="YouTube Shorts / Reels">
+            <span class="service-icon" aria-hidden="true">📱</span>
+            <span class="service-name">YouTube Shorts &amp; Reels</span>
+          </button>
+          <button type="button" class="service-card" data-service="Cricket Edits">
+            <span class="service-icon" aria-hidden="true">🏏</span>
+            <span class="service-name">Cricket Edits</span>
+          </button>
+          <button type="button" class="service-card" data-service="Gaming Montages">
+            <span class="service-icon" aria-hidden="true">🎮</span>
+            <span class="service-name">Gaming Montages</span>
+          </button>
+          <button type="button" class="service-card" data-service="Long-form YouTube Videos">
+            <span class="service-icon" aria-hidden="true">🎬</span>
+            <span class="service-name">Long-form YouTube Videos</span>
+          </button>
+          <button type="button" class="service-card" data-service="Cinematic Edits">
+            <span class="service-icon" aria-hidden="true">🎥</span>
+            <span class="service-name">Cinematic Edits</span>
+          </button>
+          <button type="button" class="service-card" data-service="Custom Video Editing">
+            <span class="service-icon" aria-hidden="true">✂️</span>
+            <span class="service-name">Custom Video Editing</span>
+          </button>
+        </div>
+
+        <div class="booking-form-wrap reveal" id="bookingFormWrap">
+          <form id="bookingForm" class="booking-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="customerName">Customer Name <span class="req">*</span></label>
+                <input type="text" id="customerName" name="customerName" required placeholder="Your name" autocomplete="name" />
+                <span class="field-error" id="err-customerName" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="customerEmail">Customer Email <span class="req">*</span></label>
+                <input type="email" id="customerEmail" name="customerEmail" required placeholder="you@example.com" autocomplete="email" />
+                <span class="field-error" id="err-customerEmail" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="serviceSelect">Editing Service <span class="req">*</span></label>
+                <select id="serviceSelect" name="service" required>
+                  <option value="">Select a service…</option>
+                  <option value="YouTube Shorts / Reels">YouTube Shorts / Reels</option>
+                  <option value="Cricket Edits">Cricket Edits</option>
+                  <option value="Gaming Montages">Gaming Montages</option>
+                  <option value="Long-form YouTube Videos">Long-form YouTube Videos</option>
+                  <option value="Cinematic Edits">Cinematic Edits</option>
+                  <option value="Custom Video Editing">Custom Video Editing</option>
+                </select>
+                <span class="field-error" id="err-serviceSelect" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="deliveryDate">Desired Delivery Date <span class="req">*</span></label>
+                <input type="date" id="deliveryDate" name="deliveryDate" required />
+                <span class="field-error" id="err-deliveryDate" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="projectDescription">Brief Project Description <span class="req">*</span></label>
+              <textarea id="projectDescription" name="projectDescription" required rows="4" placeholder="Describe your project, footage, goals, and any key details."></textarea>
+              <span class="field-error" id="err-projectDescription" role="alert"></span>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="sourceLink">Source Footage Link (YouTube / Google Drive)</label>
+                <input type="url" id="sourceLink" name="sourceLink" placeholder="https://..." />
+                <span class="field-error" id="err-sourceLink" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="referenceLink">Reference Video Link</label>
+                <input type="url" id="referenceLink" name="referenceLink" placeholder="https://..." />
+                <span class="field-error" id="err-referenceLink" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="duration">Approximate Final Video Duration</label>
+                <input type="text" id="duration" name="duration" placeholder="e.g. 60 seconds" />
+              </div>
+              <div class="form-field">
+                <label for="style">Preferred Editing Style</label>
+                <input type="text" id="style" name="style" placeholder="e.g. fast-paced, cinematic" />
+              </div>
+              <div class="form-field">
+                <label for="budget">Budget Range</label>
+                <select id="budget" name="budget">
+                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="Under $50">Under $50</option>
+                  <option value="$50–$100">$50–$100</option>
+                  <option value="$100–$250">$100–$250</option>
+                  <option value="$250–$500">$250–$500</option>
+                  <option value="$500+">$500+</option>
+                  <option value="Custom / discuss">Custom / discuss</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="additional">Additional Instructions</label>
+              <textarea id="additional" name="additional" rows="3" placeholder="Anything else I should know?"></textarea>
+            </div>
+
+            <div class="form-field checkbox-field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="permission" name="permission" required />
+                <span>I have permission to share any submitted footage and links.</span>
+              </label>
+              <span class="field-error" id="err-permission" role="alert"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="submitBooking">Prepare Email</button>
+              <button type="reset" class="btn btn-ghost" id="resetBooking">Reset</button>
+            </div>
+
+            <p class="privacy-note">
+              Privacy: submitting this form prepares an email in your email application addressed to dipesh23.in@gmail.com. No data is stored or sent automatically, and nothing is uploaded to an external service.
+            </p>
+          </form>
+
+          <div class="booking-status" id="bookingStatus" hidden aria-live="polite">
+            <h3>Your email draft is ready</h3>
+            <p>Your default email application should open with a message addressed to <strong>dipesh23.in@gmail.com</strong>. Please review the details and press <strong>Send</strong> to submit your booking request.</p>
+            <p>If your email application did not open, contact <a href="mailto:dipesh23.in@gmail.com">dipesh23.in@gmail.com</a> directly and include your project details.</p>
+            <div class="status-actions">
+              <button type="button" class="btn btn-primary" id="reopenEmail">Open Email Again</button>
+              <button type="button" class="btn btn-ghost" id="editRequest">Edit Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect -->
         </div>
       </div>
     </section>

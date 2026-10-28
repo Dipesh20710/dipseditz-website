@@ -192,3 +192,180 @@ function escapeHtml(str) {
     .replace(/'/g, "&#039;");
 }
 
+
+/* ---------- booking ---------- */
+const BOOKING_RECIPIENT = 'dipesh23.in@gmail.com';
+let lastBookingMailto = '';
+
+function setupBooking() {
+  const form = document.getElementById('bookingForm');
+  if (!form) return;
+  const serviceSelect = document.getElementById('serviceSelect');
+  const dateInput = document.getElementById('deliveryDate');
+  const status = document.getElementById('bookingStatus');
+  const reopenBtn = document.getElementById('reopenEmail');
+  const editBtn = document.getElementById('editRequest');
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  if (dateInput) dateInput.min = yyyy + '-' + mm + '-' + dd;
+
+  document.querySelectorAll('.service-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const svc = card.getAttribute('data-service');
+      if (serviceSelect) serviceSelect.value = svc;
+      document.querySelectorAll('.service-card').forEach((c) => c.classList.remove('active'));
+      card.classList.add('active');
+      setError('serviceSelect', '');
+      const wrap = document.getElementById('bookingFormWrap');
+      if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (serviceSelect) serviceSelect.focus();
+    });
+  });
+
+  function setError(id, msg) {
+    const el = document.getElementById('err-' + id);
+    if (el) el.textContent = msg;
+    const input = document.getElementById(id);
+    if (input) input.classList.toggle('invalid', !!msg);
+  }
+
+  ['customerName', 'customerEmail', 'serviceSelect', 'deliveryDate', 'projectDescription', 'sourceLink', 'referenceLink', 'permission'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', () => setError(id, ''));
+    el.addEventListener('change', () => setError(id, ''));
+  });
+
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function isValidUrl(v) {
+    if (!v) return true;
+    try { new URL(v); return true; } catch (e) { return false; }
+  }
+
+  function validate() {
+    let ok = true;
+    const name = document.getElementById('customerName').value.trim();
+    const email = document.getElementById('customerEmail').value.trim();
+    const service = serviceSelect.value;
+    const date = dateInput.value;
+    const desc = document.getElementById('projectDescription').value.trim();
+    const source = document.getElementById('sourceLink').value.trim();
+    const ref = document.getElementById('referenceLink').value.trim();
+    const perm = document.getElementById('permission').checked;
+
+    if (!name) { setError('customerName', 'Please enter your name.'); ok = false; }
+    else setError('customerName', '');
+    if (!email) { setError('customerEmail', 'Please enter your email.'); ok = false; }
+    else if (!isValidEmail(email)) { setError('customerEmail', 'Please enter a valid email address.'); ok = false; }
+    else setError('customerEmail', '');
+    if (!service) { setError('serviceSelect', 'Please select a service.'); ok = false; }
+    else setError('serviceSelect', '');
+    if (!date) { setError('deliveryDate', 'Please choose a delivery date.'); ok = false; }
+    else {
+      const chosen = new Date(date + 'T00:00:00');
+      const todayDate = new Date(); todayDate.setHours(0, 0, 0, 0);
+      if (chosen < todayDate) { setError('deliveryDate', 'Please choose a future date.'); ok = false; }
+      else setError('deliveryDate', '');
+    }
+    if (!desc) { setError('projectDescription', 'Please describe your project.'); ok = false; }
+    else setError('projectDescription', '');
+    if (!isValidUrl(source)) { setError('sourceLink', 'Please enter a valid URL.'); ok = false; }
+    else setError('sourceLink', '');
+    if (!isValidUrl(ref)) { setError('referenceLink', 'Please enter a valid URL.'); ok = false; }
+    else setError('referenceLink', '');
+    if (!perm) { setError('permission', 'You must confirm permission to share footage.'); ok = false; }
+    else setError('permission', '');
+    return ok;
+  }
+
+  function buildMailto() {
+    const name = document.getElementById('customerName').value.trim();
+    const email = document.getElementById('customerEmail').value.trim();
+    const service = serviceSelect.value;
+    const date = dateInput.value;
+    const desc = document.getElementById('projectDescription').value.trim();
+    const source = document.getElementById('sourceLink').value.trim();
+    const ref = document.getElementById('referenceLink').value.trim();
+    const duration = document.getElementById('duration').value.trim();
+    const style = document.getElementById('style').value.trim();
+    const budget = document.getElementById('budget').value;
+    const additional = document.getElementById('additional').value.trim();
+
+    const subject = 'Dips Editz Booking Request - ' + service + ' - ' + name;
+
+    const lines = [];
+    lines.push('Dips Editz Booking Request');
+    lines.push('');
+    lines.push('Service: ' + service);
+    lines.push('Customer Name: ' + name);
+    lines.push('Customer Email: ' + email);
+    lines.push('');
+    lines.push('Project Details:');
+    lines.push(desc);
+    lines.push('');
+    lines.push('Desired Delivery Date: ' + date);
+    lines.push('Source Footage Link: ' + (source || 'Not provided'));
+    lines.push('Reference Video Link: ' + (ref || 'Not provided'));
+    lines.push('Approximate Final Duration: ' + (duration || 'Not provided'));
+    lines.push('Preferred Editing Style: ' + (style || 'Not provided'));
+    lines.push('Budget Range: ' + budget);
+    lines.push('');
+    lines.push('Additional Instructions:');
+    lines.push(additional || 'None');
+    lines.push('');
+    lines.push('Permission to share submitted footage/links: Yes');
+    lines.push('');
+    lines.push('---');
+    lines.push('This email was prepared by the Dips Editz website booking form. No data was stored or sent automatically.');
+
+    const body = lines.join('\n');
+    return 'mailto:' + BOOKING_RECIPIENT + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  function openEmail() {
+    if (!validate()) return false;
+    const url = buildMailto();
+    if (url.length > 1900) {
+      alert('Your request is too long for an email link. Please shorten the description or email ' + BOOKING_RECIPIENT + ' directly.');
+      return false;
+    }
+    lastBookingMailto = url;
+    window.location.href = url;
+    return true;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!openEmail()) return;
+    if (status) {
+      form.hidden = true;
+      status.hidden = false;
+      status.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  if (reopenBtn) reopenBtn.addEventListener('click', () => {
+    if (lastBookingMailto) window.location.href = lastBookingMailto;
+    else openEmail();
+  });
+  if (editBtn) editBtn.addEventListener('click', () => {
+    if (status) status.hidden = true;
+    form.hidden = false;
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form.addEventListener('reset', () => {
+    document.querySelectorAll('.field-error').forEach((el) => { el.textContent = ''; });
+    document.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'));
+    document.querySelectorAll('.service-card').forEach((c) => c.classList.remove('active'));
+    if (status) { status.hidden = true; form.hidden = false; }
+    lastBookingMailto = '';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupBooking);
+
+

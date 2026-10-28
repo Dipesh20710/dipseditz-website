@@ -270,6 +270,56 @@ code { background: rgba(139,92,246,0.15); padding: 2px 8px; border-radius: 6px; 
 }
 .footer-copy { color: var(--muted); font-size: 0.9rem; }
 
+.booking-intro { max-width: 720px; margin: 0 auto 36px; text-align: center; color: var(--text-soft); }
+
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;
+}
+.service-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  cursor: pointer; transition: var(--transition); text-align: center; color: var(--text);
+  font-family: inherit; font-size: 0.95rem;
+}
+.service-card:hover { border-color: var(--border-strong); transform: translateY(-4px); box-shadow: 0 12px 30px var(--purple-glow); }
+.service-card.active { border-color: var(--purple); background: rgba(139,92,246,0.12); box-shadow: 0 0 0 2px var(--purple-glow); }
+.service-icon { font-size: 1.8rem; }
+.service-name { font-weight: 600; }
+
+.booking-form-wrap {
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border-strong); border-radius: var(--radius-lg);
+  padding: 32px; box-shadow: var(--shadow);
+}
+.booking-form { display: flex; flex-direction: column; gap: 18px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field label { font-weight: 600; font-size: 0.92rem; color: var(--text-soft); }
+.req { color: var(--purple-3); }
+.form-field input, .form-field select, .form-field textarea {
+  background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; color: var(--text); font-family: inherit; font-size: 0.95rem;
+  transition: var(--transition);
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-glow);
+}
+.form-field textarea { resize: vertical; min-height: 90px; }
+.form-field input.invalid, .form-field select.invalid, .form-field textarea.invalid { border-color: #f87171; }
+.field-error { color: #f87171; font-size: 0.82rem; min-height: 1.1em; }
+.checkbox-field .checkbox-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; color: var(--text-soft); }
+.checkbox-field input[type="checkbox"] { margin-top: 4px; accent-color: var(--purple); width: 16px; height: 16px; }
+.form-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.privacy-note { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+
+.booking-status {
+  margin-top: 24px; padding: 24px; border-radius: var(--radius);
+  background: rgba(139,92,246,0.08); border: 1px solid var(--border-strong);
+}
+.booking-status h3 { font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px; color: var(--purple-3); }
+.booking-status p { color: var(--text-soft); margin-bottom: 10px; }
+.status-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
@@ -283,6 +333,8 @@ code { background: rgba(139,92,246,0.15); padding: 2px 8px; border-radius: 6px; 
   .hero-logo-wrap { width: 260px; }
   .about-grid { grid-template-columns: 1fr; }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
   .social-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
@@ -292,6 +344,7 @@ code { background: rgba(139,92,246,0.15); padding: 2px 8px; border-radius: 6px; 
   .logo-img { width: 34px; height: 34px; }
   .video-grid { grid-template-columns: 1fr; }
   .social-grid { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 20px; }
   .stat-num { font-size: 1.6rem; }
   .section { padding: 60px 0; }
