@@ -1,7 +1,6 @@
-const CACHE_VERSION = 'dipseditz-v2';
+const CACHE_VERSION = 'dipseditz-v3';
 const CACHE_NAME = CACHE_VERSION;
 const APP_SHELL = [
-  './',
   './index.html',
   './style.css',
   './script.js',
@@ -12,11 +11,22 @@ const APP_SHELL = [
   './offline.html'
 ];
 
+const OFFLINE_FALLBACK = './offline.html';
+
+function offlineResponse() {
+  return caches.match(OFFLINE_FALLBACK, { ignoreSearch: true })
+    .then((r) => r || new Response(
+      '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Offline</title></head><body style="background:#07070d;color:#f5f5fa;font-family:sans-serif;text-align:center;padding:40px"><h1>You are offline</h1><p>The Dips Editz portfolio needs a connection for this content.</p></body></html>',
+      { status: 503, statusText: 'Service Unavailable', headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+    ));
+}
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(APP_SHELL))
       .then(() => self.skipWaiting())
+      .catch((err) => { console.warn('Install failed:', err); })
   );
 });
 
@@ -57,15 +67,13 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         })
-        .catch(() =>
-          caches.match('./index.html').then((r) => r || caches.match('./offline.html'))
-        )
+        .catch(() => offlineResponse())
     );
     return;
   }
 
   event.respondWith(
-    caches.match(req).then((cached) => {
+    caches.match(req, { ignoreSearch: true }).then((cached) => {
       if (cached) return cached;
       return fetch(req).then((res) => {
         if (res && res.status === 200 && res.type === 'basic') {
@@ -73,7 +81,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((c) => c.put(req, copy)).catch(() => {});
         }
         return res;
-      }).catch(() => caches.match('./offline.html'));
+      }).catch(() => offlineResponse());
     })
   );
 });
