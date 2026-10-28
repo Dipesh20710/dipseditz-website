@@ -1,6 +1,68 @@
 # Dips Editz — Website
 
 A premium, dark black & purple website for the Dips Editz YouTube channel.
+Built with HTML, CSS, and JavaScript only. Now a Progressive Web App (PWA).
+
+## Preview in Chrome
+
+### Option 1 — Open the file directly
+1. Open Chrome.
+2. Press `Ctrl + O` (or drag the file into the window).
+3. Select `index.html` inside this folder.
+
+> Service workers require a secure context. For full PWA testing use Option 2.
+
+### Option 2 — Local server (recommended)
+```powershell
+cd "C:\Users\dipes\Python\dipseditz-website"
+python -m http.server 8000
+```
+Then open Chrome and visit: http://localhost:8000
+
+## Test the PWA
+1. Open Chrome DevTools (F12) → **Application** tab.
+2. **Manifest**: check name "Dips Editz", icons 192/512, start_url, scope, theme/background colors.
+3. **Service Workers**: confirm `service-worker.js` is registered and activated for scope `/dipseditz-website/`.
+4. **Cache Storage**: verify `dipseditz-v1` contains the app shell.
+5. Throttle network to Offline and reload — the offline fallback page should appear for navigations; cached assets still load.
+6. Click "Install App" when the prompt appears, or use Chrome menu → "Install Dips Editz".
+
+## Publish to GitHub Pages
+Upload these files to the repository root (replace existing):
+- index.html
+- style.css
+- script.js
+- manifest.webmanifest
+- service-worker.js
+- offline.html
+- app-icon-192.png
+- app-icon-512.png
+- spiderman-logo.png (already there)
+
+Enable GitHub Pages on the main branch. The site runs at:
+https://dipesh20710.github.io/dipseditz-website/
+
+## Install the PWA
+- Desktop (Chrome/Edge): click "Install App" or the install icon in the address bar.
+- Android (Chrome): menu → "Install app" / "Add to Home screen".
+- iOS (Safari): Share → "Add to Home Screen".
+
+## Package as Android APK later (separate workflow)
+This PWA is not itself an APK. To create an Android APK later, use a packaging tool such as:
+- Bubblewrap (Trusted Web Activity): `npx @bubblewrap/cli init --manifest=https://dipesh20710.github.io/dipseditz-website/manifest.webmanifest`
+- PWABuilder (https://www.pwabuilder.com) to generate an APK/AAB.
+- Capacitor or Cordova wrapping the hosted site.
+
+These are separate steps and are not included in this project.
+
+## Notes
+- No backend, database, or API keys are used.
+- Booking requests are prepared as emails; the customer sends them.
+- No customer data is cached or stored by the service worker.
+
+# Dips Editz — Website
+
+A premium, dark black & purple website for the Dips Editz YouTube channel.
 Built with HTML, CSS, and JavaScript only.
 
 ## Preview in Chrome
