@@ -30,13 +30,13 @@ Using VS Code: install the "Live Server" extension, right-click `index.html` →
 
 ## Customize
 
-- **YouTube channel URL**: already set in `js/script.js` → `CHANNEL_URL`.
-- **Featured videos**: edit the `VIDEOS` array in `js/script.js`. Replace `YOUR_VIDEO_ID_1` etc. with real YouTube video IDs (the part after `v=` in a video URL).
-- **Social links**: edit the `SOCIAL` object in `js/script.js`.
+- **YouTube channel URL**: already set in `script.js` → `CHANNEL_URL`.
+- **Featured videos**: edit the `VIDEOS` array in `script.js`. Replace `YOUR_VIDEO_ID_1` etc. with real YouTube video IDs (the part after `v=` in a video URL).
+- **Social links**: edit the `SOCIAL` object in `script.js`.
 - **Text / about**: edit `index.html`.
-- **Colors**: edit CSS variables at the top of `css/style.css`.
+- **Colors**: edit CSS variables at the top of `style.css`.
 
 ## Files
 - `index.html` — page structure
-- `css/style.css` — styling (dark black + purple theme)
-- `js/script.js` — interactivity, video rendering, animations
+- `style.css` — styling (dark black + purple theme)
+- `script.js` — interactivity, video rendering, animations

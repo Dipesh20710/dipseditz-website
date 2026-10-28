@@ -4,7 +4,7 @@
    ========================================================= */
 
 // Your YouTube channel URL (used by all Subscribe buttons)
-const CHANNEL_URL = "https://youtube.com/@dipseditz_23?si=DDHzcY0lzmBWJB4L";
+const CHANNEL_URL = "https://www.youtube.com/@dipseditz_23";
 
 // Featured videos: replace the placeholder IDs with your real YouTube video IDs.
 // Find a video ID in its URL: youtube.com/watch?v=VIDEO_ID
