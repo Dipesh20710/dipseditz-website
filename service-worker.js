@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'dipseditz-v1';
+const CACHE_VERSION = 'dipseditz-v2';
 const CACHE_NAME = CACHE_VERSION;
 const APP_SHELL = [
   './',
@@ -14,7 +14,9 @@ const APP_SHELL = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -30,24 +32,29 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
-  const url = new URL(req.url);
-  // Only handle same-origin requests; let third-party (YouTube, fonts) pass through.
+  let url;
+  try { url = new URL(req.url); } catch (e) { return; }
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
   if (url.origin !== self.location.origin) return;
 
-  // Never cache mailto or non-http(s)
-  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
-
-  // Navigation requests: network-first, fall back to cache / offline page.
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put('./index.html', copy));
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then((c) => c.put('./index.html', copy)).catch(() => {});
+          }
           return res;
         })
         .catch(() =>
@@ -57,17 +64,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets: cache-first.
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
       return fetch(req).then((res) => {
         if (res && res.status === 200 && res.type === 'basic') {
           const copy = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy)).catch(() => {});
         }
         return res;
-      }).catch(() => undefined);
+      }).catch(() => caches.match('./offline.html'));
     })
   );
 });
