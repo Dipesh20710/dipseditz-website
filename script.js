@@ -404,27 +404,6 @@ window.addEventListener('appinstalled', () => {
   if (installBtn) installBtn.hidden = true;
 });
 
-/* ---------- APK download button ---------- */
-const APK_DOWNLOAD_URL = ''; // Set this after building/publishing the APK (e.g. a GitHub Release asset URL).
-
-function setupApkButton() {
-  const btn = document.getElementById('downloadApkBtn');
-  if (!btn) return;
-  if (APK_DOWNLOAD_URL) {
-    btn.href = APK_DOWNLOAD_URL;
-    btn.setAttribute('download', 'dipseditz.apk');
-    btn.hidden = false;
-  } else {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('The Android APK is not available yet. Build it with Bubblewrap or PWABuilder (see README.md), then set APK_DOWNLOAD_URL in script.js.');
-    });
-    btn.hidden = false;
-  }
-}
-
-document.addEventListener('DOMContentLoaded', setupApkButton);
-
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js').catch((err) => {
