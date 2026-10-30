@@ -1270,6 +1270,15 @@ function setupHeroScrollArrow() {
   update();
 }
 
+/* ---------- copy protection ---------- */
+function setupCopyProtection() {
+  document.addEventListener('copy', (e) => {
+    const active = document.activeElement;
+    const editable = !!active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable);
+    if (!editable) e.preventDefault();
+  });
+}
+
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   try { wireSubscribe(); } catch (e) { console.error("init failed:", e); }
@@ -1295,6 +1304,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try { setupActiveNav(); } catch (e) { console.error("init failed:", e); }
   try { setupWhatsAppPreview(); } catch (e) { console.error("init failed:", e); }
   try { setupCopyActions(); } catch (e) { console.error("init failed:", e); }
+  try { setupCopyProtection(); } catch (e) { console.error("init failed:", e); }
   try { setupHeroScrollArrow(); } catch (e) { console.error("init failed:", e); }
   try { setupTilt(); } catch (e) { console.error("init failed:", e); }
   try { setupInstall(); } catch (e) { console.error("init failed:", e); }

@@ -1177,6 +1177,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
   margin-bottom: 18px;
 }
+/* ---------- responsive optimization ---------- */
+@media (max-width: 390px) {
+  .container { padding: 0 16px; }
+  .hero-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .section-title { font-size: clamp(1.55rem, 7vw, 2rem); }
+  .section { padding: 56px 0; }
+  .hero { padding: 56px 0 96px; }
+  .booking-form-wrap, .feedback-form-wrap, .contact-grid { padding: 18px; }
+  .filter-btn { font-size: 0.82rem; padding: 6px 12px; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+}
+@media (min-width: 391px) and (max-width: 640px) {
+  .hero-cta .btn { min-width: 0; }
+}
+@media (min-width: 1601px) {
+  .container { max-width: 1320px; }
+  .hero-title { font-size: 4.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-arrow, .floating-whatsapp, .back-to-top { transition: none; }
+}
 .portfolio-toolbar .search-input { margin: 0; }
 .portfolio-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .sort-select {
@@ -1253,12 +1274,17 @@ html[data-theme="light"] .hero-scroll-arrow {
   background: var(--surface); color: var(--text-soft); font-size: 0.85rem; cursor: pointer;
 }
 .related-btn:hover { border-color: var(--teal); color: var(--teal); }
-#faq,
-#faq * {
+body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+input, textarea, select, [contenteditable="true"], .editable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 :root {
   --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
@@ -1312,3 +1338,48 @@ body.menu-open { overflow: hidden; }
   .back-to-top, .floating-whatsapp { bottom: 12px; }
 }
 html, body { overflow-x: hidden; }
+
+/* ---------- mobile overflow fixes ---------- */
+.services-grid,
+.journey-timeline,
+.hero-highlights,
+.contact-grid,
+.portfolio-toolbar,
+.filter-bar {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.service-card,
+.journey-step,
+.journey-content,
+.highlight,
+.contact-card {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.service-card .btn,
+.contact-card .copy-btn {
+  max-width: 100%;
+  white-space: normal;
+}
+.journey-content {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.journey-timeline {
+  padding-left: 24px;
+}
+.floating-whatsapp,
+.back-to-top,
+.hero-scroll-arrow {
+  bottom: max(12px, env(safe-area-inset-bottom));
+}
+.floating-whatsapp {
+  left: max(12px, env(safe-area-inset-left));
+}
+.back-to-top,
+.hero-scroll-arrow {
+  right: max(12px, env(safe-area-inset-right));
+}
