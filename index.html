@@ -2,19 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('dipseditz_theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0B0D10' : '#F4F5F6');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dips Editz — Premium Video Editing</title>
-  <meta name="description" content="Dips Editz — premium video editing, motion graphics and cinematic edits. Subscribe for the latest videos." />
-  <meta name="theme-color" content="#07070d" />
+  <title>Dips Editz | Video Editing Portfolio</title>
+  <meta name="description" content="Dips Editz is a video editing portfolio offering cinematic edits, motion graphics, color grading, and custom video editing. Request a custom quote for YouTube, Shorts, Reels, cricket, and gaming edits." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0B0D10" />
+  <link rel="canonical" href="https://dipesh20710.github.io/dipseditz-website/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dips Editz | Video Editing Portfolio" />
+  <meta property="og:description" content="Cinematic video editing, motion graphics, color grading, and custom edits for creators and brands. Request a quote." />
+  <meta property="og:url" content="https://dipesh20710.github.io/dipseditz-website/" />
+  <meta property="og:image" content="https://dipesh20710.github.io/dipseditz-website/app-icon-512.png" />
+  <meta property="og:site_name" content="Dips Editz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dips Editz | Video Editing Portfolio" />
+  <meta name="twitter:description" content="Cinematic video editing, motion graphics, color grading, and custom edits for creators and brands." />
+  <meta name="twitter:image" content="https://dipesh20710.github.io/dipseditz-website/app-icon-512.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dips Editz",
+    "url": "https://dipesh20710.github.io/dipseditz-website/",
+    "sameAs": ["https://www.youtube.com/@dipseditz_23"],
+    "email": "mailto:dipesh23.in@gmail.com",
+    "telephone": "+917305855341"
+  }
+  </script>
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="apple-touch-icon" href="./app-icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Dips Editz" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=51" />
 </head>
 <body>
   <div class="bg-orbs" aria-hidden="true">
@@ -31,12 +67,13 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
-        <a href="#videos">Videos</a>
         <a href="#about">About</a>
-        <a href="#book">Book an Edit</a>
-        <a href="#connect">Connect</a>
+        <a href="#videos">Portfolio</a>
+        <a href="#connect">Contact</a>
       </nav>
       <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" id="themeToggle" type="button" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
+        <a class="btn btn-coral btn-sm" href="#book">Request an Edit</a>
         <button class="btn btn-ghost btn-sm" id="installBtn" type="button" hidden>Install App</button>
         <a class="btn btn-primary btn-sm subscribe-btn" id="navSubscribe" href="#" target="_blank" rel="noopener noreferrer">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
@@ -51,34 +88,69 @@
 
   <main>
     <section class="hero" id="home">
+      <div class="hero-scene" aria-hidden="true">
+        <div class="scene-floor"></div>
+        <div class="scene-platform"></div>
+        <div class="scene-shadow"></div>
+        <div class="scene-shape shape-cube"></div>
+        <div class="scene-shape shape-ring"></div>
+        <div class="scene-shape shape-pyramid"></div>
+        <div class="scene-shape shape-orb"></div>
+        <div class="scene-highlight"></div>
+      </div>
       <div class="container hero-inner">
         <div class="hero-content reveal">
+          <span class="creator-label">Personal Creator Portfolio</span>
           <span class="badge">Premium Video Editing</span>
           <h1 class="hero-title">
-            Crafting <span class="gradient-text">Cinematic</span><br />
-            Stories That <span class="gradient-text">Captivate</span>
+            Turning <span class="gradient-text">Footage</span><br />
+            Into <span class="gradient-text">Stories</span>
           </h1>
           <p class="hero-sub">
-            Welcome to <strong>Dips Editz</strong> — where raw footage becomes art. High-end edits, motion graphics, color grading and seamless storytelling for creators and brands.
+            I'm a video editor and digital creator passionate about transforming ordinary footage into engaging visual experiences.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" id="heroSubscribe" href="#" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
-              Subscribe on YouTube
-            </a>
-            <a class="btn btn-primary" href="#book">Book an Edit</a>
-            <a class="btn btn-ghost" href="#videos">Watch Latest</a>
+            <a class="btn btn-primary" href="#videos">Explore My Work</a>
+            <a class="btn btn-coral" href="#book">Request a Custom Edit</a>
+            <a class="btn btn-ghost" id="heroSubscribe" href="#" target="_blank" rel="noopener noreferrer">Subscribe on YouTube</a>
           </div>
-          <div class="hero-stats">
-            <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-plus">+</span><div class="stat-label">Edits Delivered</div></div>
-            <div class="stat"><span class="stat-num" data-count="50">0</span><span class="stat-plus">K+</span><div class="stat-label">Views Generated</div></div>
-            <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-plus">%</span><div class="stat-label">Client Satisfaction</div></div>
+          <div class="hero-highlights" id="heroHighlights">
+            <div class="highlight">
+              <span class="highlight-label">Creative Passion</span>
+              <span class="highlight-value">Video Editing</span>
+            </div>
+            <div class="highlight">
+              <span class="highlight-label">Content Focus</span>
+              <span class="highlight-value">Cricket &amp; Cinematic Edits</span>
+            </div>
+            <div class="highlight">
+              <span class="highlight-label">Creator Identity</span>
+              <span class="highlight-value">Dips Editz</span>
+            </div>
           </div>
         </div>
         <div class="hero-visual reveal">
           <div class="hero-logo-wrap">
-            <img src="./spiderman-logo.png" alt="Dips Editz Spider-Man logo" class="hero-logo" />
+            <img src="./spiderman-logo.png" alt="Dips Editz Spider-Man logo" class="hero-logo" width="320" height="320" decoding="async" />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showreel -->
+    <section class="section" id="showreel">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Showreel</span>
+          <h2 class="section-title">My Best <span class="gradient-text">Edits</span></h2>
+          <p class="section-sub">Preview selected editing work. The embedded player loads only when you press play.</p>
+        </div>
+        <div class="showreel-frame reveal" id="showreelFrame">
+          <button type="button" class="showreel-play" id="showreelPlay" aria-label="Play showreel video">
+            <img id="showreelThumb" src="https://i.ytimg.com/vi/Cr29h8OBS5c/hqdefault.jpg" alt="Showreel thumbnail" loading="lazy" decoding="async" />
+            <span class="showreel-fallback" id="showreelFallback" hidden>My Best Edits<br />Preview unavailable</span>
+            <span class="showreel-play-btn" aria-hidden="true">▶</span>
+          </button>
         </div>
       </div>
     </section>
@@ -89,43 +161,174 @@
         <div class="section-head reveal">
           <span class="eyebrow">Featured Work</span>
           <h2 class="section-title">Latest <span class="gradient-text">Videos</span></h2>
-          <p class="section-sub">Click any thumbnail to watch on YouTube. Add your own video IDs in <code>js/script.js</code>.</p>
+          <p class="section-sub">Click any thumbnail to watch. Search and filter below.</p>
         </div>
+
+        <div class="portfolio-toolbar reveal">
+          <input type="search" id="videoSearch" class="search-input" placeholder="Search by title…" aria-label="Search videos" />
+          <div class="portfolio-controls">
+            <select id="videoSort" class="sort-select" aria-label="Sort videos">
+              <option value="featured">Featured first</option>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="title">Title A–Z</option>
+            </select>
+            <button type="button" class="btn btn-ghost btn-sm" id="clearFiltersBtn">Clear filters</button>
+          </div>
+          <p class="result-count" id="resultCount" aria-live="polite"></p>
+        </div>
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="cricket">Cricket</button>
+          <button class="filter-btn" data-filter="gaming">Gaming</button>
+          <button class="filter-btn" data-filter="shorts">Shorts</button>
+          <button class="filter-btn" data-filter="other">Other</button>
+          <button class="filter-btn" data-filter="favourites">Favourites</button>
+        </div>
+
         <div class="video-grid" id="videoGrid" aria-live="polite"></div>
+        <div class="empty-state" id="videoEmpty" hidden>No videos match your search or filter.</div>
+
         <div class="section-cta reveal">
-          <a class="btn btn-ghost" id="moreVideos" href="#" target="_blank" rel="noopener noreferrer">
-            View all on YouTube →
-          </a>
+          <a class="btn btn-ghost" id="moreVideos" href="#" target="_blank" rel="noopener noreferrer">View all on YouTube →</a>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-text reveal">
-          <span class="eyebrow">About</span>
-          <h2 class="section-title">The <span class="gradient-text">Editor</span> Behind the Cuts</h2>
-          <p>
-            I'm the creator behind <strong>Dips Editz</strong> — passionate about turning ordinary clips into scroll-stopping content. From fast-paced shorts to long-form cinematic pieces, every frame is crafted with intention.
-          </p>
-          <p>
-            Services include: video editing, motion graphics, color grading, sound design, subtitles &amp; captions, and channel branding. Always open to collaborations and new projects.
-          </p>
-          <ul class="about-list">
-            <li><span class="check">✓</span> Fast turnaround without sacrificing quality</li>
-            <li><span class="check">✓</span> Trend-aware, algorithm-friendly edits</li>
-            <li><span class="check">✓</span> Clear communication &amp; revisions included</li>
-          </ul>
-          <a class="btn btn-primary" id="aboutSubscribe" href="#" target="_blank" rel="noopener noreferrer">Subscribe for more</a>
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Skills</span>
+          <h2 class="section-title">Editing <span class="gradient-text">Capabilities</span></h2>
+          <p class="section-sub">A flexible skill showcase. Edit these cards to match the work you actually do.</p>
         </div>
-        <div class="about-visual reveal">
-          <div class="about-card">
-            <div class="about-card-inner">
-              <div class="about-stat"><strong>3+</strong><span>Years Editing</span></div>
-              <div class="about-stat"><strong>4K</strong><span>Quality Output</span></div>
-              <div class="about-stat"><strong>∞</strong><span>Creativity</span></div>
+        <div class="skills-grid reveal">
+          <article class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3>Short-form Editing</h3>
+            <p>Vertical edits for Shorts and Reels with fast pacing and clear hooks.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🎬</div>
+            <h3>Long-form Editing</h3>
+            <p>Structured edits for YouTube videos, vlogs, and tutorials.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🏏</div>
+            <h3>Cricket Edits</h3>
+            <p>Highlight reels and cinematic sports montages.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🎮</div>
+            <h3>Gaming Edits</h3>
+            <p>Montages and highlight compilations with punchy pacing.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3>Visual Polish</h3>
+            <p>Colour, sound, subtitles, and motion graphics where applicable.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">✂️</div>
+            <h3>Custom Projects</h3>
+            <p>Flexible editing support for unique project needs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="section section-deep" id="journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Journey</span>
+          <h2 class="section-title">My Creative <span class="gradient-text">Journey</span></h2>
+          <p class="section-sub">Every edit is a new lesson. Every project is another step forward.</p>
+        </div>
+        <div class="journey-timeline reveal">
+          <div class="journey-step">
+            <span class="journey-dot"></span>
+            <div class="journey-content">
+              <h3>Discovering Video Editing</h3>
+              <p>My passion for creativity led me to explore video editing and discover how ordinary clips could become engaging visual stories.</p>
             </div>
+          </div>
+          <div class="journey-step">
+            <span class="journey-dot"></span>
+            <div class="journey-content">
+              <h3>Exploring Different Editing Styles</h3>
+              <p>I experimented with transitions, effects, music synchronization, cinematic visuals and different editing techniques to develop my creative style.</p>
+            </div>
+          </div>
+          <div class="journey-step">
+            <span class="journey-dot"></span>
+            <div class="journey-content">
+              <h3>Building Dips Editz</h3>
+              <p>I created Dips Editz as my own creative identity and YouTube channel, giving me a platform to showcase my edits and share my creativity.</p>
+            </div>
+          </div>
+          <div class="journey-step">
+            <span class="journey-dot"></span>
+            <div class="journey-content">
+              <h3>My Journey Continues</h3>
+              <p>From cricket edits to creative video projects, I'm constantly learning, improving my editing skills and working towards becoming a better digital creator.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Services</span>
+          <h2 class="section-title">Editing <span class="gradient-text">Services</span></h2>
+          <p class="section-sub">Custom quotes for every project. No fixed prices.</p>
+        </div>
+        <div class="services-grid reveal">
+          <div class="service-card">
+            <div class="service-icon">🎬</div>
+            <div class="service-title">YouTube Video Editing</div>
+            <div class="service-desc">Long-form content, vlogs, tutorials, and channel videos edited for retention and style.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="Long-form YouTube Videos">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <div class="service-title">Shorts &amp; Reels</div>
+            <div class="service-desc">Fast-paced vertical edits optimized for reach and engagement.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="YouTube Shorts / Reels">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🏏</div>
+            <div class="service-title">Cricket Edits</div>
+            <div class="service-desc">Highlight reels, fan edits, and cinematic cricket montages.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="Cricket Edits">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎮</div>
+            <div class="service-title">Gaming Edits</div>
+            <div class="service-desc">Montages, killstreaks, and highlight compilations with punchy pacing.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="Gaming Montages">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎥</div>
+            <div class="service-title">Cinematic Edits</div>
+            <div class="service-desc">Color-graded, music-driven edits for a premium look.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="Cinematic Edits">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">✂️</div>
+            <div class="service-title">Custom Editing</div>
+            <div class="service-desc">Anything else — describe your project and get a custom quote.</div>
+            <button class="btn btn-ghost btn-sm pick-service" data-service="Custom Video Editing">Request This</button>
+            <a class="btn btn-ghost btn-sm whatsapp-enquiry whatsapp-preview" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
           </div>
         </div>
       </div>
@@ -144,35 +347,44 @@
           <p>Choose a service below or describe your project in the form. Final quotes depend on your specific requirements — no fixed prices or guaranteed delivery times are promised. Every project is reviewed individually.</p>
         </div>
 
-        <div class="service-grid reveal" id="serviceGrid">
-          <button type="button" class="service-card" data-service="YouTube Shorts / Reels">
+        <div class="service-pick-grid reveal" id="serviceGrid">
+          <button type="button" class="service-pick" data-service="YouTube Shorts / Reels">
             <span class="service-icon" aria-hidden="true">📱</span>
             <span class="service-name">YouTube Shorts &amp; Reels</span>
           </button>
-          <button type="button" class="service-card" data-service="Cricket Edits">
+          <button type="button" class="service-pick" data-service="Cricket Edits">
             <span class="service-icon" aria-hidden="true">🏏</span>
             <span class="service-name">Cricket Edits</span>
           </button>
-          <button type="button" class="service-card" data-service="Gaming Montages">
+          <button type="button" class="service-pick" data-service="Gaming Montages">
             <span class="service-icon" aria-hidden="true">🎮</span>
             <span class="service-name">Gaming Montages</span>
           </button>
-          <button type="button" class="service-card" data-service="Long-form YouTube Videos">
+          <button type="button" class="service-pick" data-service="Long-form YouTube Videos">
             <span class="service-icon" aria-hidden="true">🎬</span>
             <span class="service-name">Long-form YouTube Videos</span>
           </button>
-          <button type="button" class="service-card" data-service="Cinematic Edits">
+          <button type="button" class="service-pick" data-service="Cinematic Edits">
             <span class="service-icon" aria-hidden="true">🎥</span>
             <span class="service-name">Cinematic Edits</span>
           </button>
-          <button type="button" class="service-card" data-service="Custom Video Editing">
+          <button type="button" class="service-pick" data-service="Custom Video Editing">
             <span class="service-icon" aria-hidden="true">✂️</span>
             <span class="service-name">Custom Video Editing</span>
           </button>
         </div>
 
         <div class="booking-form-wrap reveal" id="bookingFormWrap">
+          <div class="form-stepper" id="formStepper" aria-label="Quote request progress">
+            <div class="step active" data-step="1"><span class="step-num">1</span><span class="step-label">Contact</span></div>
+            <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label">Service</span></div>
+            <div class="step" data-step="3"><span class="step-num">3</span><span class="step-label">Timeline</span></div>
+            <div class="step" data-step="4"><span class="step-num">4</span><span class="step-label">Details</span></div>
+            <div class="step" data-step="5"><span class="step-num">5</span><span class="step-label">Review</span></div>
+          </div>
+
           <form id="bookingForm" class="booking-form" novalidate>
+
             <div class="form-grid">
               <div class="form-field">
                 <label for="customerName">Customer Name <span class="req">*</span></label>
@@ -230,7 +442,7 @@
                 <input type="text" id="style" name="style" placeholder="e.g. fast-paced, cinematic" />
               </div>
               <div class="form-field">
-                <label for="budget">Budget Range</label>
+                <label for="budget">Budget Range (INR)</label>
                 <select id="budget" name="budget">
                   <option value="Not sure yet">Not sure yet</option>
                   <option value="Under ₹50">Under ₹50</option>
@@ -257,8 +469,19 @@
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary" id="submitBooking">Prepare Email</button>
+              <button type="button" class="btn btn-ghost" id="prevStepBtn" hidden>Back</button>
+              <button type="button" class="btn btn-primary" id="nextStepBtn">Next</button>
+              <button type="button" class="btn btn-primary" id="reviewBtn" hidden>Review Request</button>
               <button type="reset" class="btn btn-ghost" id="resetBooking">Reset</button>
+            </div>
+
+            <div class="review-box" id="reviewBox" hidden>
+              <h4>Review your request</h4>
+              <div id="reviewContent"></div>
+              <div class="form-actions" style="margin-top:12px;">
+                <button type="submit" class="btn btn-primary" id="submitBooking">Prepare Email</button>
+                <button type="button" class="btn btn-ghost" id="editReview">Edit</button>
+              </div>
             </div>
 
             <p class="privacy-note">
@@ -279,7 +502,141 @@
       </div>
     </section>
 
-    <!-- Connect -->
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2 class="section-title">Client <span class="gradient-text">Feedback</span></h2>
+          <p class="section-sub">Genuine feedback will appear here.</p>
+        </div>
+        <div class="feedback-form-wrap reveal" id="feedbackFormWrap">
+          <form id="feedbackForm" class="feedback-form" novalidate>
+            <div class="form-field">
+              <label for="feedbackName">Your Name <span class="req">*</span></label>
+              <input type="text" id="feedbackName" name="feedbackName" required placeholder="Your name" autocomplete="name" />
+              <span class="field-error" id="err-feedbackName" role="alert"></span>
+            </div>
+            <div class="form-field">
+              <label for="feedbackRating">Rating <span class="req">*</span></label>
+              <div class="star-rating" id="starRating" role="radiogroup" aria-label="Rating from 1 to 5 stars">
+                <button type="button" class="star-btn" data-rating="1" aria-label="1 star">★</button>
+                <button type="button" class="star-btn" data-rating="2" aria-label="2 stars">★</button>
+                <button type="button" class="star-btn" data-rating="3" aria-label="3 stars">★</button>
+                <button type="button" class="star-btn" data-rating="4" aria-label="4 stars">★</button>
+                <button type="button" class="star-btn" data-rating="5" aria-label="5 stars">★</button>
+              </div>
+              <input type="hidden" id="feedbackRating" name="feedbackRating" required />
+              <span class="field-error" id="err-feedbackRating" role="alert"></span>
+            </div>
+            <div class="form-field">
+              <label for="feedbackText">Your Feedback <span class="req">*</span></label>
+              <textarea id="feedbackText" name="feedbackText" required rows="4" placeholder="Share your experience working with Dips Editz."></textarea>
+              <span class="field-error" id="err-feedbackText" role="alert"></span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="feedbackSubmitBtn">Submit Feedback</button>
+              <button type="reset" class="btn btn-ghost" id="feedbackResetBtn">Reset</button>
+            </div>
+            <p class="privacy-note">Your feedback is not published automatically. Submitting opens your email app addressed to dipesh23.in@gmail.com so it can be reviewed and approved before being added as a testimonial.</p>
+          </form>
+          <div class="feedback-status" id="feedbackStatus" hidden aria-live="polite">
+            <h3>Feedback ready to send</h3>
+            <p>Your email app should open with your feedback addressed to <strong>dipesh23.in@gmail.com</strong>. Please review the details and press <strong>Send</strong>.</p>
+            <p>Your review has not been published yet and will only appear after approval.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notifications -->
+    <section class="section" id="notifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Notifications</span>
+          <h2 class="section-title">Notification <span class="gradient-text">Settings</span></h2>
+          <p class="section-sub">Optional browser notification preferences.</p>
+        </div>
+        <div class="notif-box reveal">
+          <button class="btn btn-ghost" id="notifBtn" type="button">Enable Notifications</button>
+          <p class="notif-status" id="notifStatus">Notifications are optional. Permission is requested only when you click the button.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-deep" id="about">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="eyebrow">About</span>
+          <h2 class="section-title">The <span class="gradient-text">Editor</span> Behind the Cuts</h2>
+          <p>
+            I'm the creator behind <strong>Dips Editz</strong>. This introduction is editable: replace it with your own story, interests, and creative focus.
+          </p>
+          <p>
+            Add what you enjoy creating, the kinds of projects you like working on, and how you approach each edit. Keep the tone personal and natural.
+          </p>
+          <ul class="about-list">
+            <li><span class="check">✓</span> Editable creator identity and introduction</li>
+            <li><span class="check">✓</span> Creative approach and interests</li>
+            <li><span class="check">✓</span> Current goals as a creator</li>
+          </ul>
+          <a class="btn btn-primary" id="aboutSubscribe" href="#" target="_blank" rel="noopener noreferrer">Subscribe for more</a>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-card">
+            <div class="about-card-inner">
+              <div class="about-stat"><strong>3+</strong><span>Years Editing</span></div>
+              <div class="about-stat"><strong>4K</strong><span>Quality Output</span></div>
+              <div class="about-stat"><strong>∞</strong><span>Creativity</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="reviews-list reveal" id="approvedReviews" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+          <p class="section-sub">Answers to common questions about custom video editing requests.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>What types of videos can I request?</summary>
+            <p>You can request YouTube Shorts, Reels, cricket edits, gaming montages, long-form YouTube videos, cinematic edits, and custom video editing.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I request a custom edit?</summary>
+            <p>Use the booking form to share your project details, service, timeline, and budget. The form prepares an email draft addressed to dipesh23.in@gmail.com.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I share my source footage?</summary>
+            <p>Add a YouTube or Google Drive link in the Source Footage Link field. You can also include a reference video link for style direction.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How is the editing price determined?</summary>
+            <p>Pricing is provided through a custom quote based on the project scope, duration, style, and delivery timeline. No fixed prices are listed.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How long will my edit take?</summary>
+            <p>Delivery timing is agreed per project. Choose your desired delivery date in the booking form and confirm the final schedule by email.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I request changes or revisions?</summary>
+            <p>Revision arrangements are discussed and agreed for each project. Include any important requirements in your project description.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How will I receive my completed video?</summary>
+            <p>Delivery details are confirmed during the project discussion. Final files are shared through the agreed method.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I contact Dips Editz?</summary>
+            <p>Use the booking form, email dipesh23.in@gmail.com, call +91 7305855341, or message on WhatsApp.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -288,17 +645,42 @@
     <section class="section" id="connect">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Stay Connected</span>
-          <h2 class="section-title">Find Me <span class="gradient-text">Everywhere</span></h2>
-          <p class="section-sub">Contact me for business enquiries and collaborations.</p>
+          <span class="eyebrow">Let's Connect</span>
+          <h2 class="section-title">Let's Work <span class="gradient-text">Together.</span></h2>
+          <p class="section-sub">Have a project in mind? Let's turn your idea into something creative.</p>
         </div>
-        <div class="social-grid reveal">
-          <a class="social-card" data-social="youtube" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="social-icon">▶</span><span class="social-name">YouTube</span><span class="social-handle">@dipseditz_23</span>
+        <div class="contact-grid reveal">
+          <a class="contact-card" data-social="youtube" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon">▶</span>
+            <span class="contact-name">YouTube</span>
+            <span class="contact-handle">@dipseditz_23</span>
+            <span class="contact-action">Visit channel →</span>
           </a>
-          <a class="social-card" data-social="email" href="#" rel="noopener noreferrer">
-            <span class="social-icon">✉</span><span class="social-name">Email</span><span class="social-handle">dipesh23.in@gmail.com</span>
+          <a class="contact-card" data-social="email" href="#" rel="noopener noreferrer">
+            <span class="contact-icon">✉</span>
+            <span class="contact-name">Email</span>
+            <span class="contact-handle">dipesh23.in@gmail.com</span>
+            <button type="button" class="copy-btn" id="copyEmailBtn">Copy</button>
+            <span class="contact-action">Send email →</span>
           </a>
+          <a class="contact-card" data-social="phone" href="#" rel="noopener noreferrer">
+            <span class="contact-icon">☎</span>
+            <span class="contact-name">Phone</span>
+            <span class="contact-handle">+91 7305855341</span>
+            <button type="button" class="copy-btn" id="copyPhoneBtn">Copy</button>
+            <span class="contact-action">Call now →</span>
+          </a>
+          <a class="contact-card whatsapp-preview" data-social="whatsapp" data-whatsapp-message="Hi Dips Editz, I would like to enquire about a custom video edit. Could you share the next steps?" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon">💬</span>
+            <span class="contact-name">WhatsApp</span>
+            <span class="contact-handle">+91 7305855341</span>
+            <span class="contact-action">Chat on WhatsApp →</span>
+          </a>
+        </div>
+        <div class="project-enquiry reveal">
+          <h3>Ready to Start a Project?</h3>
+          <p>Tell me what you're looking to create.</p>
+          <a class="btn btn-primary" href="#book">Request a Custom Edit</a>
         </div>
       </div>
     </section>
@@ -307,18 +689,76 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="./spiderman-logo.png" alt="Dips Editz Spider-Man logo" class="footer-logo" />
+        <img src="./spiderman-logo.png" alt="Dips Editz Spider-Man logo" class="footer-logo" width="32" height="32" decoding="async" />
         <span>Dips Editz</span>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#videos">Portfolio</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#services">Services</a>
+        <a href="#book">Book</a>
+        <a href="#connect">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:dipesh23.in@gmail.com">dipesh23.in@gmail.com</a>
+        <a href="tel:+917305855341">+91 7305855341</a>
+        <a href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.youtube.com/@dipseditz_23" target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
       <p class="footer-copy">© <span id="year"></span> Dips Editz. All rights reserved.</p>
       <a class="btn btn-primary btn-sm" id="footerSubscribe" href="#" target="_blank" rel="noopener noreferrer">Subscribe</a>
     </div>
   </footer>
 
-  <noscript>
-    <p style="text-align:center;padding:2rem;color:#f5f5fa;">This site requires JavaScript to display featured videos. Please enable JavaScript.</p>
+  <!-- Video Modal -->
+  <div class="modal-backdrop" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close video">×</button>
+      <div class="modal-video" id="modalVideo"></div>
+      <div class="modal-info">
+        <div class="video-title" id="modalTitle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study Modal -->
+  <div class="modal-backdrop" id="caseStudyModal" role="dialog" aria-modal="true" aria-label="Case study">
+    <div class="modal case-study-modal">
+      <button class="modal-close" id="caseStudyClose" aria-label="Close case study">×</button>
+      <div class="modal-info" id="caseStudyContent"></div>
+    </div>
+  </div>
+    <p style="text-align:center;padding:2rem;color:#F5F7FA;">This site requires JavaScript to display featured videos. Please enable JavaScript.</p>
+  <!-- WhatsApp Preview Modal -->
+  <div class="modal-backdrop" id="whatsappModal" role="dialog" aria-modal="true" aria-label="Review WhatsApp message">
+    <div class="modal">
+      <button class="modal-close" id="whatsappClose" aria-label="Close">×</button>
+      <div class="modal-info">
+        <h3>Review WhatsApp message</h3>
+        <p>WhatsApp will open with this draft. You can edit it before sending.</p>
+        <textarea id="whatsappMessage" rows="5"></textarea>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="whatsappOpenBtn">Open WhatsApp</button>
+          <button type="button" class="btn btn-ghost" id="whatsappCancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </noscript>
 
-  <script src="./script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+  <a class="floating-whatsapp" href="https://wa.me/917305855341" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <span aria-hidden="true">💬</span>
+    <span>WhatsApp</span>
+  </a>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+  <button class="hero-scroll-arrow" id="heroScrollArrow" type="button" aria-label="Scroll to next section">↓</button>
+  <script src="./script.js?v=51" defer></script>
 </body>
 </html>
