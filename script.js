@@ -5,15 +5,15 @@
 const CHANNEL_URL = 'https://www.youtube.com/@dipseditz_23';
 const BOOKING_RECIPIENT = 'dipesh23.in@gmail.com';
 
-const SHOWREEL_VIDEO_ID = 'Cr29h8OBS5c'; // Replace with your dedicated showreel ID when available.
+const SHOWREEL_VIDEO_ID = 'Ffmm2ZEgscM'; // Replace with your dedicated showreel ID when available.
 const VIDEOS = [
-  { id: 'Cr29h8OBS5c', title: 'Featured Edit #1', category: 'shorts', featured: true, caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: 'ByOrCR9hIPU', title: 'Featured Edit #2', category: 'shorts', featured: true, caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: 'lA9j8ng-oE0', title: 'Shorts Edit #1', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: 'Ffmm2ZEgscM', title: 'Shorts Edit #2', category: 'shorts', featured: true, mainFeatured: true, caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: 'Zd-0AuGCKN4', title: 'Shorts Edit #3', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: '6bCB5uoXq7g', title: 'Shorts Edit #4', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
-  { id: 'JAZSxYhqwzM', title: 'Shorts Edit #5', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'Cr29h8OBS5c', title: 'Shorts Edit #1', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'ByOrCR9hIPU', title: 'Shorts Edit #2', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'lA9j8ng-oE0', title: 'Shorts Edit #3', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'Ffmm2ZEgscM', title: 'My Best Edit', category: 'shorts', featured: true, mainFeatured: true, caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'Zd-0AuGCKN4', title: 'Shorts Edit #4', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: '6bCB5uoXq7g', title: 'Shorts Edit #5', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
+  { id: 'JAZSxYhqwzM', title: 'Shorts Edit #6', category: 'shorts', caseStudy: { brief: 'Add the real project brief here.', techniques: 'Add editing techniques used.', tools: 'Add software/tools used.', result: 'Add a short result description here.' } },
 ];
 
 const SOCIAL = {
@@ -132,7 +132,7 @@ function renderVideos() {
         <button class="fav-btn ${fav ? 'active' : ''}" data-fav="${v.id}" aria-label="Toggle favourite" type="button">${fav ? '❤' : '♡'}</button>
       </div>
       <div class="video-info">
-        ${v.mainFeatured ? '<span class="video-featured">Featured Video</span>' : (v.featured ? '<span class="video-featured">Featured Edit</span>' : '')}
+        ${v.mainFeatured ? '<span class="video-featured">BEST VIDEO</span>' : (v.featured ? '<span class="video-featured">Featured Edit</span>' : '')}
         <div class="video-title">${escapeHtml(v.title)}</div>
         <span class="video-category">${escapeHtml(v.category)}</span>
         <button type="button" class="case-study-btn" data-case="${escapeHtml(v.id)}">View Case Study</button>
