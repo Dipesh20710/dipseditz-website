@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dips Editz — Admin Orders</title>
+  <meta name="theme-color" content="#0B0D10" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./supabase-config.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="./admin.js" defer></script>
+</head>
+<body>
+  <main class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Admin</span>
+        <h1 class="section-title">Order <span class="gradient-text">Management</span></h1>
+        <p class="section-sub">Authorized administrators only. Access is enforced by Supabase Row Level Security.</p>
+      </div>
+      <div class="orders-panel" id="adminPanel">
+        <div id="adminSignedOut" class="orders-auth">
+          <form id="adminAuthForm" class="auth-form" novalidate>
+            <div class="form-field"><label for="adminEmail">Email</label><input type="email" id="adminEmail" required /></div>
+            <div class="form-field"><label for="adminPassword">Password</label><input type="password" id="adminPassword" required /></div>
+            <div class="form-actions"><button type="submit" class="btn btn-primary">Sign In</button></div>
+          </form>
+          <p class="orders-note" id="adminAuthMessage" aria-live="polite"></p>
+        </div>
+        <div id="adminSignedIn" hidden>
+          <div class="orders-toolbar">
+            <span id="adminUserLabel" class="orders-user"></span>
+            <div class="orders-toolbar-actions">
+              <button type="button" class="btn btn-ghost btn-sm" id="adminRefreshBtn">Refresh</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="adminSignOutBtn">Sign Out</button>
+            </div>
+          </div>
+          <div id="adminOrders" class="orders-list"></div>
+          <div id="adminEditor" class="order-card" hidden>
+            <h4>Order details</h4>
+            <div class="form-field">
+              <label for="adminStatus">Status</label>
+              <select id="adminStatus">
+                <option>Pending</option>
+                <option>Accepted</option>
+                <option>Editing</option>
+                <option>Ready for Review</option>
+                <option>Delivered</option>
+                <option>Cancelled</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="adminNote">Status note</label>
+              <textarea id="adminNote" rows="3"></textarea>
+            </div>
+            <div class="form-field">
+              <label for="adminDelivery">Estimated delivery date</label>
+              <input type="date" id="adminDelivery" />
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-primary" id="adminSaveBtn">Save Update</button>
+            </div>
+            <p class="orders-note" id="adminSaveMessage" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
