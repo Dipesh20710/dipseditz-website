@@ -327,6 +327,8 @@ code { background: var(--teal-soft); padding: 2px 8px; border-radius: 6px; font-
 .section-head { text-align: center; max-width: 680px; margin: 0 auto 50px; }
 .eyebrow {
   display: inline-block; color: var(--teal); font-weight: 600; font-size: 0.85rem;
+.video-card.featured-video { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal), var(--shadow-soft); }
+.video-card.featured-video .video-featured { background: var(--teal-soft); color: var(--teal); }
 .video-card.short .video-thumb { aspect-ratio: 9 / 16; max-width: 260px; margin: 0 auto; }
   letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px;
 }

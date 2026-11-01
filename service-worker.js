@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'dipseditz-v59';
+const CACHE_VERSION = 'dipseditz-v61';
 const CACHE_NAME = CACHE_VERSION;
 const APP_SHELL = [
   './index.html',
